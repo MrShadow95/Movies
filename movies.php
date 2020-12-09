@@ -1,7 +1,7 @@
 <?php
 require('./admin/config.php');
 
-$results_per_page = 10;
+$results_per_page = 2;
 
 $select = "select count(*) as count from movies.movies";
 $count = $con->query($select);
@@ -42,7 +42,7 @@ $res = $con->query($select_mov);
                     <a class="nav-link" href="./">Home </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="movies.php">Movies</a>
+                    <a class="nav-link" href="movies.php?page=1">Movies</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./admin/">Add Movies</a>
@@ -123,12 +123,32 @@ $res = $con->query($select_mov);
         }
         echo "</div>";
         // }
+        echo '<nav aria-label="Page navigation example">
+            <ul class="pagination">';
 
-        for ($page = 1; $page <= $num_of_pages; $page++) {
-            echo "<a href='movies.php?page=" . $page . "'>" . $page . "</a>";
+        if ($num_of_pages == 1) {
+            echo '<li class="page-item"><a class="page-link" href="' . $page . '">' . $page . '</a></li>';
+        } else {
+
+            for ($page = 1; $page <= $num_of_pages; $page++) {
+                // echo "<a class='page-link' href='movies.php?page=" . $page . "'>" . $page . "</a>";
+                if (($_GET['page']) == 1) {
+                    echo '<li class="page-item"><a class="page-link" href="movies.php?page=' . $page . '">' . $page . '</a></li>';
+                }
+            }
         }
-
         ?>
+        </ul>
+        </nav>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
 
 
     </div>

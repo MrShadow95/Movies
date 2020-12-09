@@ -38,7 +38,7 @@ $res = $con->query($genre);
                     <a class="nav-link" href="#">Home </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../movies.php">Movies</a>
+                    <a class="nav-link" href="../movies.php?page=1">Movies</a>
                 </li>
                 </li>
             </ul>
